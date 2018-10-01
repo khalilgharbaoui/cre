@@ -9,8 +9,27 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Khalil Gharbaoui"]
   spec.email         = ["khalilgharbaoui@hotmail.com"]
 
-  spec.summary       = %q{Fetch rails credentials the easy way}
-  spec.description   = %q{comming soon...}
+  spec.summary       = %q{Fetch rails credentials the easy way!}
+  spec.description   = %q{Cre reduces the amount of code you have to write when\
+                          fetching rails credentials.\
+                          If your encrypted credentials look like this:
+                          ```
+                          production:
+                            password: 'foobar'
+                          development:
+                            password: 'foobar'
+                          test:
+                            password: 'foobar'
+                          ```
+                          Usually you have to get it like this:
+                          `Rails.application.credentials.dig(Rails.env, :password)`
+                          with Cre you can just do: `Cre.dig(:password)`.
+                          By default it grabs the current Rails environment.
+                          To overwrite this behavior add the enviroment as the
+                          first argument:
+                            `Cre.dig(:production, :password)`
+                          }
+
   spec.homepage      = "https://rubygems.org/cre"
   spec.license       = "MIT"
 
