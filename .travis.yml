@@ -1,7 +1,14 @@
----
 sudo: false
 language: ruby
 cache: bundler
 rvm:
-  - 2.5.1
+- 2.5.1
 before_install: gem install bundler -v 1.16.3
+deploy:
+  provider: rubygems
+  api_key:
+    secure: dhCpZKOY8zp+abYyKn+9fJ24zDtqQ4d19hge7KaoWBRVr5D4lO0Iuc8Psq5UPOkToH68beQMXLGQDeRjM6SH2K6QhnftNfO1ODCKx7N/dnoCDzNSyqWCmkxyP/h5A94rIrJND8H0q7vn92PCXb7WZtf8cgFokYy4YC7iYWH1QrKrJue3fRfGXCCUujgH62LnPOfBa/nviDiryr6iReEMjl9wRKAPwvMXT41GNlLWVje3echJod1nXBVvY1ImjoeWkb68l55ucpZeQHcegkRMeMWFJ7LceGOLb3exD3CPph6R+KOM/Dfr0w4cIfwrJ9zcdAkYXuk6LYWWBer2YtMLECvYFXJOqpCP1Dd9yAr1Qfo7I9oXHQ6aVJA1KTEQZw0H5NL3zK79sudgklkaOoHEmhkcbLhaJizxrXWRZwikm5oRufCojT0O5x6AK87bUjMmeE01XdJDCLxq1FG/1jYcer8JLc7znBiNQB723olcb8E4ILffKJopGGIB8ioAzTVpRY1JaegYUqVHbIY5EcejTsjDM+d2wNnVWvToC+pey39qFirCcgssjRT7sQQCqWDRDMyB/2Ek4eqd8VrXQJ2PQ3kzdpmEFr7YZhyUOdxAcXZEJPjm+kg7wK27cw763x9r38c61A3pv6C6dcrg5kztRDN4iM/1eY4UIXw9RyAEHVg=
+  gem: cre
+  on:
+    tags: true
+    repo: khalilgharbaoui/cre
