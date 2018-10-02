@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'awesome_print', '~> 1.8'
   s.add_development_dependency 'rspec', '~> 3.8'
   s.add_development_dependency 'simplecov', '~> 0.10'
-  s.add_development_dependency 'sqlite3', '~> 1.3.13'
+  s.add_development_dependency 'sqlite3', '~> 1.3', '>= 1.3.13'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
