@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Cre::VERSION
   s.authors     = ['Khalil Gharbaoui']
   s.email       = ['khalilgharbaoui@hotmail.com']
-  s.homepage    = 'https://rubygems.org/cre'
+  s.homepage    = 'https://github.com/khalilgharbaoui/cre'
   s.summary     = 'Fetch rails credentials the easy way!'
   s.description = "Cre reduces the amount of code you have to write when\
                       fetching rails credentials.\
