@@ -146,12 +146,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  awesome_print
+  awesome_print (~> 1.8)
   cre!
-  pry
-  rspec
-  simplecov
-  sqlite3
+  pry (~> 0.11)
+  rspec (~> 3.8)
+  simplecov (~> 0.10)
+  sqlite3 (~> 1.3.13)
 
 BUNDLED WITH
    1.16.3
