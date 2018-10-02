@@ -1,3 +1,4 @@
+require "cre/railtie"
 require "cre/version"
 
 module Cre
@@ -12,7 +13,7 @@ module Cre
   # The dig method here is just an aesthetic thing to keep us in context.
   # TODO: Add support for deeply nested credentials.
 
-  def self.dig(env = Rails.env.to_sym, credential)
+  def self.dig(env = Rails.env, credential)
     Rails.application.credentials.dig(
       env.to_sym,
       credential.to_sym

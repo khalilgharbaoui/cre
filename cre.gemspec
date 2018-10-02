@@ -1,57 +1,54 @@
+$LOAD_PATH.push File.expand_path('lib', __dir__)
 
-lib = File.expand_path("../lib", __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "cre/version"
+# Maintain your gem's version:
+require 'cre/version'
 
-Gem::Specification.new do |spec|
-  spec.name          = "cre"
-  spec.version       = Cre::VERSION
-  spec.authors       = ["Khalil Gharbaoui"]
-  spec.email         = ["khalilgharbaoui@hotmail.com"]
+# Describe your gem and declare its dependencies:
+Gem::Specification.new do |s|
+  s.name        = 'cre'
+  s.version     = Cre::VERSION
+  s.authors     = ['Khalil Gharbaoui']
+  s.email       = ['khalilgharbaoui@hotmail.com']
+  s.homepage    = 'https://rubygems.org/cre'
+  s.summary     = 'Fetch rails credentials the easy way!'
+  s.description = "Cre reduces the amount of code you have to write when\
+                      fetching rails credentials.\
+                      If your encrypted credentials look like this:
+                      ```
+                      production:
+                        password: 'foobar'
+                      development:
+                        password: 'foobar'
+                      test:
+                        password: 'foobar'
+                      ```
+                      Usually you have to get it like this:
+                        `Rails.application.credentials.dig(Rails.env, :password)`
+                      with Cre you can just do: `Cre.dig(:password)`.
+                      By default it grabs the current Rails environment.
+                      To overwrite this behavior add the enviroment as the
+                      first argument:
+                        `Cre.dig(:production, :password)`
+                    "
 
-  spec.summary       = %q{Fetch rails credentials the easy way!}
-  spec.description   = %q{Cre reduces the amount of code you have to write when\
-                          fetching rails credentials.\
-                          If your encrypted credentials look like this:
-                          ```
-                          production:
-                            password: 'foobar'
-                          development:
-                            password: 'foobar'
-                          test:
-                            password: 'foobar'
-                          ```
-                          Usually you have to get it like this:
-                          `Rails.application.credentials.dig(Rails.env, :password)`
-                          with Cre you can just do: `Cre.dig(:password)`.
-                          By default it grabs the current Rails environment.
-                          To overwrite this behavior add the enviroment as the
-                          first argument:
-                            `Cre.dig(:production, :password)`
-                          }
+  s.license     = 'MIT'
 
-  spec.homepage      = "https://rubygems.org/cre"
-  spec.license       = "MIT"
+  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
+
+  s.add_dependency 'rails', '~> 5.2.1'
+
+  s.add_development_dependency 'pry'
+  s.add_development_dependency 'awesome_print'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'simplecov'
+  s.add_development_dependency 'sqlite3'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "https://rubygems.org"
+  if s.respond_to?(:metadata)
+    s.metadata['allowed_push_host'] = 'https://rubygems.org'
   else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
+    raise 'RubyGems 2.0 or newer is required to protect against ' \
+      'public gem pushes.'
   end
-
-  # Specify which files should be added to the gem when it is released.
-  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
-
-  spec.add_development_dependency "bundler", "~> 1.16"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
 end
