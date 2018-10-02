@@ -30,7 +30,7 @@ test:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'cre'
+gem 'cre', '~> 0.1.2'
 ```
 
 And then execute:
