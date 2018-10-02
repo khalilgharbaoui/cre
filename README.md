@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/khalilgharbaoui/cre.svg?branch=master)](https://travis-ci.org/khalilgharbaoui/cre)
+[![Build Status](https://travis-ci.org/khalilgharbaoui/cre.svg?branch=master)](https://travis-ci.org/khalilgharbaoui/cre) [![Gem Version](https://badge.fury.io/rb/cre.svg)](https://badge.fury.io/rb/cre)
 # Cre
 This gem basically lets you dig out the rails encrypted credentials by simply doing:
 
