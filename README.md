@@ -1,8 +1,11 @@
 [![Build Status](https://travis-ci.org/khalilgharbaoui/cre.svg?branch=master)](https://travis-ci.org/khalilgharbaoui/cre)
 # Cre
 This gem basically lets you dig out the rails encrypted credentials by simply doing:
+
 `Cre.dig(:password)` ✅
+
 Instead of going the long way:
+
 `Rails.application.credentials.dig(Rails.env.to_sym, :password)` ❌
 
 ## Usage
