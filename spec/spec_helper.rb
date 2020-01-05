@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Configure Rails Environment
 ENV['RAILS_ENV'] = 'test'
 
@@ -11,7 +13,7 @@ SimpleCov.start do
   add_filter '/spec/'
 end
 require 'pry'
-require "awesome_print"
+require 'awesome_print'
 AwesomePrint.pry!
 require 'cre'
 

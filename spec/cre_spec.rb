@@ -9,7 +9,7 @@ RSpec.describe Cre do
 
   it 'digs the :password out of the encrypted credentials' do
     password = Cre.dig(:password)
-    expect(password).to eq(Rails.application.credentials.dig(Rails.env.to_sym,:password))
+    expect(password).to eq(Rails.application.credentials.dig(Rails.env.to_sym, :password))
   end
   it 'digs the :password out of the dummy data when in production' do
     # Arrange that the current Rails environment is production.
@@ -27,12 +27,12 @@ RSpec.describe Cre do
     expect(development_password).to eq(Rails.application.credentials.dig(Rails.env.to_sym, :password))
   end
   it 'digs the :password out when env. is manually overwritten' do
-    expect(Cre.dig(:test ,:password)).to eq('faketestpassword')
-    expect(Cre.dig(:test ,:password)).to eq(Rails.application.credentials.dig(:test, :password))
-    expect(Cre.dig(:development ,:password)).to eq('fakedevelopmentpassword')
-    expect(Cre.dig(:development ,:password)).to eq(Rails.application.credentials.dig(:development, :password))
-    expect(Cre.dig(:production ,:password)).to eq('fakeproductionpassword')
-    expect(Cre.dig(:production ,:password)).to eq(Rails.application.credentials.dig(:production, :password))
+    expect(Cre.dig(:test, :password)).to eq('faketestpassword')
+    expect(Cre.dig(:test, :password)).to eq(Rails.application.credentials.dig(:test, :password))
+    expect(Cre.dig(:development, :password)).to eq('fakedevelopmentpassword')
+    expect(Cre.dig(:development, :password)).to eq(Rails.application.credentials.dig(:development, :password))
+    expect(Cre.dig(:production, :password)).to eq('fakeproductionpassword')
+    expect(Cre.dig(:production, :password)).to eq(Rails.application.credentials.dig(:production, :password))
   end
   it 'returs nil when a credential does not exist' do
     expect(Cre.dig(:nonexistent)).to be_nil
