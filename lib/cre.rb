@@ -13,10 +13,18 @@ module Cre
   # The dig method here is just an aesthetic thing to keep us in context.
   # TODO: Add support for deeply nested credentials.
 
-  def self.dig(env = Rails.env, credential)
-    Rails.application.credentials.dig(
-      env.to_sym,
-      credential.to_sym
-    )
+  def self.dig(*credentials)
+    env, credentials = if defined_environments.include? credentials[0].to_sym
+      [credentials[0].to_sym, credentials[1..-1].flatten.map(&:to_sym)]
+    else
+      [Rails.env.to_sym, [credentials].flatten.map(&:to_sym)]
+    end
+    Rails.application.credentials.dig(env, *credentials)
+  end
+
+  private
+
+  def self.defined_environments
+    Dir.entries(Rails.root.join('config','environments').to_s).grep(/\.rb$/).map{ |filename| File.basename(filename, '.rb').to_sym }
   end
 end
