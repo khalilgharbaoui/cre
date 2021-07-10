@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cre (2)
+    cre (2.1.0)
       rails (>= 5.2)
 
 GEM
