@@ -11,6 +11,7 @@ Instead of going the long way:
 ## Usage
 By default it uses the currently active rails environment.
 Specify the environment specifically by adding it as the first argument.
+But do remember that it only considers `defined environments` in `config/environments`
 
 `Cre.dig(:production, :password)`
 
@@ -25,6 +26,14 @@ development:
 test:
   aws_key: 'somekeytest'
   password: 'fakepass'
+```  
+It also supports deeper nested credentials for example:
+```
+Cre.dig(:production, :aws, :client, secret, :key)
+```
+Or:  
+```
+Cre.dig(:something, :nested, :multiple, :layers, :deep)
 ```
 ## Installation
 Add this line to your application's Gemfile:
@@ -44,7 +53,6 @@ $ gem install cre
 ```
 
 ##Todo:
-- Add support for more and less levels of nesting.
 - Exeption handeling
 
 ## Contributing
