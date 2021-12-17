@@ -39,7 +39,7 @@ Cre.dig(:something, :nested, :multiple, :layers, :deep)
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'cre', '>= 2'
+gem 'cre', '~> 2.1.1'
 ```
 
 And then execute:
