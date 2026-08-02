@@ -9,6 +9,11 @@ gemspec
 rails_version = ENV['RAILS_VERSION']
 if rails_version && !rails_version.empty?
   gem 'rails', "~> #{rails_version}.0"
+
+  # Rails < 7.1 fails to load with concurrent-ruby >= 1.3.5
+  # (uninitialized constant ActiveSupport::LoggerThreadSafeLevel::Logger),
+  # a known ecosystem issue when resolving old Rails without a lockfile.
+  gem 'concurrent-ruby', '< 1.3.5' if rails_version.to_f < 7.1
 else
   gem 'rails', '>= 6.1'
 end
