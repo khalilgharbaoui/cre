@@ -1,12 +1,4 @@
 RSpec.describe Cre do
-  pp 'Dummy Encrypted Credentials Data:'
-  pp 'ℹ️ ' * 25
-  ap Rails.application.credentials.config
-  pp 'ℹ️ ' * 25
-  ap 'Master key: ' << Rails.application.credentials.key_path.to_s
-  ap 'Credentials: ' << Rails.application.credentials.content_path.to_s
-  pp 'ℹ️ ' * 25
-
   it 'digs the :password out of the encrypted credentials' do
     password = Cre.dig(:password)
     expect(password).to eq(Rails.application.credentials.dig(Rails.env.to_sym, :password))
@@ -41,6 +33,10 @@ RSpec.describe Cre do
   it 'returs nil when a credential does not exist' do
     expect(Cre.dig(:nonexistent)).to be_nil
     expect(Rails.application.credentials.dig(Rails.env.to_sym, :nonexistent)).to be_nil
+  end
+
+  it 'returns nil when called with no arguments' do
+    expect(Cre.dig).to be_nil
   end
 
   context 'nested credentials' do

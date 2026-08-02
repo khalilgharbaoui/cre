@@ -32,22 +32,21 @@ Gem::Specification.new do |s|
 
   s.license     = 'MIT'
 
-  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
+  s.files = Dir['lib/**/*.rb'] + %w[LICENSE.txt README.md CHANGELOG.md]
 
-  s.add_dependency 'rails', '>= 5.2'
+  s.required_ruby_version = '>= 2.7'
 
-  s.add_development_dependency 'pry', '>= 0.11'
-  s.add_development_dependency 'awesome_print', '>= 1.8'
-  s.add_development_dependency 'rspec', '>= 3.8'
-  s.add_development_dependency 'simplecov', '>= 0.10'
-  s.add_development_dependency 'sqlite3', '~> 1.4', '>= 1.4.2'
+  # Cre has no runtime dependencies. It only calls Rails.application at
+  # runtime, inside your Rails app, where Rails is already loaded.
+  # (The old `rails >= 5.2` runtime dependency was removed in 2.2.0 - it
+  # constrained users' bundles for no benefit.)
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if s.respond_to?(:metadata)
-    s.metadata['allowed_push_host'] = 'https://rubygems.org'
-  else
-    raise 'RubyGems 2.0 or newer is required to protect against ' \
-      'public gem pushes.'
-  end
+  s.metadata = {
+    'allowed_push_host' => 'https://rubygems.org',
+    'homepage_uri' => s.homepage,
+    'source_code_uri' => 'https://github.com/khalilgharbaoui/cre',
+    'changelog_uri' => 'https://github.com/khalilgharbaoui/cre/blob/master/CHANGELOG.md',
+    'bug_tracker_uri' => 'https://github.com/khalilgharbaoui/cre/issues',
+    'rubygems_mfa_required' => 'true'
+  }
 end
